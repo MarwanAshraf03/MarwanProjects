@@ -2,21 +2,21 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+/**
+ * main - the main function
+ *
+ * Return: zero
+ */
 int main(void)
 {
-	pid_t process_id_number;
-	int n = 0;
-
-	printf("hello world\n");
+	char *buf; 
+	int n;
 	while(1)
 	{
-		process_id_number = getpid();
-		printf("%u\n", process_id_number);
-		process_id_number = getppid();
-		printf("%u\n", process_id_number);
-		if(n == EOF)
-			break;
+		printf("$: ");
+		n = read(0, buf, 1024);
+		write(1, buf, n);
+		putchar('\n');
 	}
-
-	return(0);
+	return 0;
 }
